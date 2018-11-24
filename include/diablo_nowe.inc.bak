@@ -1,0 +1,97 @@
+#if defined _diablomod_included
+  #endinput
+#endif
+#define _diablomod_included
+
+enum renderStruct{
+	renderR,
+	renderG,
+	renderB,
+	renderFx,
+	renderNormal,
+	renderAmount
+}
+
+//rejestruje klase
+native diablo_register_class(const szNazwa[],iHealth); //grawitacja , predkosc , przezroczystosc
+
+//zwraca klase gracza
+native diablo_get_user_class(id);
+
+//nazwe klasy pobiera
+native diablo_get_class_name(classID);
+
+//zwraca level
+native diablo_get_user_level(id);
+
+//zwraca exp
+native diablo_get_user_exp(id);
+
+//zwraca points
+native diablo_get_user_points(id);
+
+//zwraca punkty agi
+native diablo_get_user_agi(id);
+
+//zwraca punkty str
+native diablo_get_user_str(id);
+
+//zwraca punkty dex
+native diablo_get_user_dex(id);
+
+//zwraca punkty int
+native diablo_get_user_int(id);
+
+//gdy klasa zostanie wybrana
+forward diablo_class_enabled(id);
+
+//gdy klasa zostanie zmieniona
+forward diablo_class_disabled(id);
+
+//przy zmianie broni
+forward diablo_weapon_deploy(id,wpnID,weaponEnt);
+
+//czy klasa gracza to klasa z tego pluginu
+native diablo_is_class_from(id);
+
+//ustawia rendering graczowi
+native diablo_set_user_render(id, fx = kRenderFxNone, r = 255, g = 255, b = 255, render = kRenderNormal, amount = 16 )
+
+//pobiera rendering gracza
+native diablo_get_user_render(id,renderStruct:Field);
+
+//czyszczenie wewnetrznych zmiennych klasy
+forward diablo_clean_data(id);
+
+//ustawianie wewnetrznych zmiennych klasy
+forward diablo_set_data(id);
+
+//prethink gracza
+forward diablo_preThink(id);
+
+//podczas zmiany renderu wysylany do wszystkich pluginow
+forward diablo_render_change(id);
+
+//czy ma taka klase
+native diablo_is_this_class(id,szClass[]);
+
+//zwracasz czas call cast 0.0 powoduje zatrzymanie
+forward Float:diablo_cast_time(id);
+
+//call cast wykonany niech plugin dziala
+forward diablo_call_cast(id);
+
+//dodawanie speed graczowi
+native diablo_set_speed(id,Float:fAmount);
+
+//ustawianie speed
+native diablo_add_speed(id,Float:fAmount);
+
+//pobranie speed
+native Float:diablo_get_speed(id)
+
+//pobranie dodatkowe speed
+native Float:diablo_get_speed_extra(id);
+
+//forawrd ustawnia speed
+forward diablo_speed_change(id);
